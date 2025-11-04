@@ -28,6 +28,16 @@ body {
     width: 150px;
 }
 
+/* 제목 자동 줄바꿈 및 반응형 크기 조절 */
+.title-text {
+    font-size: 2rem;
+    font-weight: 600;
+    word-break: keep-all; /* 단어 중간 잘림 방지 */
+    white-space: normal; /* 자동 줄바꿈 허용 */
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -36,4 +46,12 @@ body {
     padding: 10px 20px;
     border-radius: 10px;
     text-decoration: none;
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+    .title-text {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
 }
