@@ -1,57 +1,105 @@
+/* 전체 페이지 기본 설정 */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #f0f8ff;
-    text-align: center;
+    background-color: #f6f8fa;
+    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+
+    /* Flexbox를 이용해 세로 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 처음에는 위쪽부터 시작 */
+    min-height: 100vh;
 }
 
-.question {
-    background: #fff;
-    margin: 15px auto;
-    padding: 15px;
-    border-radius: 12px;
-    width: 60%;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.result-card {
-    background: #fff;
-    width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-.result-card img {
-    width: 150px;
-}
-
-/* 제목 자동 줄바꿈 및 반응형 크기 조절 */
-.title-text {
-    font-size: 2rem;
-    font-weight: 600;
-    word-break: keep-all; /* 단어 중간 잘림 방지 */
-    white-space: normal; /* 자동 줄바꿈 허용 */
-    margin-bottom: 30px;
+/* 제목 */
+h1, h3 {
+    word-wrap: break-word;
+    white-space: normal;
     line-height: 1.4;
+    margin: 20px 10px;
+    text-align: center;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: #4a90e2;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
+/* 폼 전체 (세로로 중앙 배치되도록) */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-/* 모바일 대응 */
-@media (max-width: 600px) {
-    .title-text {
-        font-size: 1.5rem;
-        padding: 0 10px;
+/* 질문 박스 */
+.question {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+
+    /* 화면 중앙 정렬 효과 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 문항 제목 */
+.question h3 {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* 선택지 */
+label {
+    display: block;
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+/* 버튼 */
+button {
+    display: block;
+    margin: 40px auto;
+    background-color: #ffcb05;
+    color: #3b4cca;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+button:hover {
+    background-color: #ffd633;
+}
+
+/* 반응형 (모바일) */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+        justify-content: flex-start; /* 모바일에서는 위쪽 정렬이 자연스러움 */
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        margin: 16px;
+    }
+
+    .question {
+        width: 94%;
+        padding: 18px;
+        font-size: 0.95rem;
+    }
+
+    button {
+        width: 80%;
+        font-size: 1rem;
+        padding: 12px 0;
     }
 }

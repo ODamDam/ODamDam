@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 QUESTIONS = [
     ("온 세상을 돌아다니며 많은 친구들과 포켓몬을 만나고 싶어!", "가까운 사람 몇 명과 조용히 어울리는 게 더 편해."),
