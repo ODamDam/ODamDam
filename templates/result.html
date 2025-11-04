@@ -3,20 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <title>포켓몬 유형 테스트 결과</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f6f8fa;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .result-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-top: 60px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 85%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: clamp(1.6rem, 6vw, 2rem);
+            margin: 15px 0 10px;
+            color: #1a1a1a;
+        }
+
+        p {
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            image-rendering: pixelated;
+        }
+
+        .type-text {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 30px 0 50px;
+            padding: 14px 30px;
+            background-color: #ffcb05;
+            color: #2c3e50;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+        }
+
+        .btn:hover {
+            background-color: #ffdb4d;
+        }
+
+        /* 타입별 색상 강조 */
+        .type-전기 { color: #FFD700; }
+        .type-불꽃 { color: #FF6B6B; }
+        .type-물 { color: #4DA6FF; }
+        .type-풀 { color: #57C84D; }
+        .type-에스퍼 { color: #C26EFF; }
+        .type-악 { color: #5A5A5A; }
+        .type-강철 { color: #A9A9A9; }
+        .type-페어리 { color: #FFB6C1; }
+        .type-비행 { color: #87CEFA; }
+        .type-바위 { color: #C2B280; }
+        .type-노말 { color: #BDBDBD; }
+
+        @media (max-width: 600px) {
+            .result-card {
+                margin-top: 40px;
+                padding: 25px 15px;
+            }
+            img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     {% if result %}
     <div class="result-card">
-        <h2>당신의 포켓몬 유형은...</h2>
+        <h2>
+            당신은 
+            <span class="type-{{ result.types[0] }}">
+                {{ result.types[0] }}
+            </span> 타입 포켓몬입니다.
+        </h2>
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ result.id }}.png" alt="{{ result.name }}">
         <h3>{{ result.name }}</h3>
-        <p>타입: {{ result.types|join(', ') }}</p>
+        <p>타입: 
+            {% for t in result.types %}
+                <span class="type-{{ t }}">{{ t }}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
         <p>{{ result.desc }}</p>
     </div>
     {% else %}
     <h2>결과를 불러올 수 없습니다.</h2>
     {% endif %}
+
     <a href="{{ url_for('index') }}" class="btn">다시 하기</a>
 </body>
 </html>
