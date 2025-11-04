@@ -1,0 +1,43 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: black;
+}
+
+.question {
+    background: #fff;
+    margin: 15px auto;
+    padding: 15px;
+    border-radius: 12px;
+    width: 60%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.result-card {
+    background: #fff;
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.result-card img {
+    width: 150px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #4a90e2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+}

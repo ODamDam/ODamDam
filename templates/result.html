@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포켓몬 유형 테스트 결과</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if result %}
+    <div class="result-card">
+        <h2>당신의 포켓몬 유형은...</h2>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ result.id }}.png" alt="{{ result.name }}">
+        <h3>{{ result.name }}</h3>
+        <p>타입: {{ result.types|join(', ') }}</p>
+        <p>{{ result.desc }}</p>
+    </div>
+    {% else %}
+    <h2>결과를 불러올 수 없습니다.</h2>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="btn">다시 하기</a>
+</body>
+</html>

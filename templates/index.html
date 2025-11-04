@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포켓몬 MBTI 테스트</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>당신은 어떤 타입의 포켓몬인가요?</h1>
+    <form action="{{ url_for('submit') }}" method="post">
+        {% for q in questions %}
+        <div class="question">
+            <h3>문항 {{ loop.index }}</h3>
+            <label>
+                <input type="radio" name="answer{{ loop.index }}" value="A" required>
+                {{ q[0] }}
+            </label><br>
+            <label>
+                <input type="radio" name="answer{{ loop.index }}" value="B">
+                {{ q[1] }}
+            </label>
+        </div>
+        <hr>
+        {% endfor %}
+        <button type="submit">결과 보기</button>
+    </form>
+</body>
+</html>
